@@ -9,7 +9,7 @@ export default AuthContext;
 
 export function AuthProvider(){
     let [user, setUser] = useState<any|null>(() => (localStorage.getItem('authTokens') ? jwtDecode(localStorage.getItem('authTokens')||'{}') : null))
-    let [authTokens, setAuthTokens] = useState<any|null>(() => (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')||'{}') : null))
+    let [authTokens, setAuthTokens] = useState<{refresh:string,access:string}|null>(() => (localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')||'{}') : null))
     const [message,setMessage] = useState<string>("")
     let [loading, setLoading] = useState(true)
     const navigate = useNavigate()
