@@ -1,18 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import PrivateRoute from './utils/PrivateRoute';
+import Header from './components/Header';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
-  const [message,setMessage] = React.useState("")
-
-  React.useEffect(()=>{
-    fetch('http://127.0.0.1:8000/backend/hello-world/')
-    .then(res=>res.json())
-    .then(data=>setMessage(data))
-  },[])
-
+  //http://127.0.0.1:8000/backend/
   return (
-    <div>{message}</div>
+    <Router>
+        <Routes>
+            <Route element={<AuthProvider />}>
+              <Route element={<Header />}>
+                <Route element = {<PrivateRoute />} >
+                  <Route path="/" element={<HomePage/>} />
+                </Route>
+                <Route path="/login" element={<LoginPage/>}/>
+              </Route>
+            </Route>
+        </Routes>
+    </Router>
   );
 }
 
