@@ -13,6 +13,7 @@ export function AuthProvider(){
     const [message,setMessage] = useState<string>("")
     let [loading, setLoading] = useState(true)
     const navigate = useNavigate()
+    const api = 'http://127.0.0.1:8000/backend/'
 
     let loginUser = async (e:any) => {
         e.preventDefault()
@@ -71,7 +72,8 @@ export function AuthProvider(){
         authTokens: authTokens,
         loginUser: loginUser,
         logoutUser: logoutUser,
-        message: message
+        message: message,
+        api:api
     }
 
     return(

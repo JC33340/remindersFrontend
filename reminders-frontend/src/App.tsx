@@ -7,9 +7,9 @@ import LoginPage from './pages/LoginPage';
 import PrivateRoute from './utils/PrivateRoute';
 import Header from './components/Header';
 import { AuthProvider } from './context/AuthContext';
+import CreateUser from './pages/CreateUser';
 
 function App() {
-  //http://127.0.0.1:8000/backend/
   return (
     <Router>
         <Routes>
@@ -19,6 +19,7 @@ function App() {
                   <Route path="/" element={<HomePage/>} />
                 </Route>
                 <Route path="/login" element={<LoginPage/>}/>
+                <Route path='/register' element ={<CreateUser />} />
               </Route>
             </Route>
         </Routes>

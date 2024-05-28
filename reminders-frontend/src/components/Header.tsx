@@ -11,6 +11,8 @@ export default function Header(){
         <header>
             <Link to='/'>Home</Link>
             {user && <div onClick={logoutUser}>Logout</div>}
+            <Link to='/register'>Register</Link>
+            <Link to ='/login'>Login</Link>
         </header>
         <Outlet />
         </>
