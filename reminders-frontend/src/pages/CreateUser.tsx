@@ -49,7 +49,6 @@ export default function CreateUser(){
         }
     }
 
-    console.log(userData)
     return(
         <div>
             <input placeholder="Username" name='username' onChange={handlechange}/>

@@ -25,7 +25,7 @@ const HomePage = () => {
             logoutUser()
         }
     }
-    console.log(profile)
+
 
     return (
         user ? (

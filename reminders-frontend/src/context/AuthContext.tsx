@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState,useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate,Outlet } from 'react-router-dom';
 import { log } from 'console';
@@ -33,7 +33,7 @@ export function AuthProvider(){
         } else if (data.detail){
             setMessage('This account does not exist')
         } else {
-            alert('Something went wrong while logging in ')
+            setMessage('Something went wrong while logging in ')
         }
     }
 
@@ -66,6 +66,17 @@ export function AuthProvider(){
             setLoading(false)
         }
     }
+
+    useEffect(()=>{
+        const REFRESH_INTERVAL = 1000 * 60 * 4
+        let interval = setInterval(()=>{
+            if(authTokens){
+                updateToken()
+            }
+        }, REFRESH_INTERVAL)
+        return () => clearInterval(interval)
+
+    },[authTokens])
 
     let contextData = {
         user: user,
