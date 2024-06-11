@@ -5,7 +5,6 @@ import { Outlet,Navigate,Link } from "react-router-dom";
 export default function Header(){
 
     const {logoutUser,user} = React.useContext(AuthContext)
-    console.log(user)
 
     return(
         <>

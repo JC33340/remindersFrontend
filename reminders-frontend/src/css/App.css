@@ -18,14 +18,14 @@ header{
     column-gap: 10px;
 }
 
-.login-div{
-    height: 50vh;
+.login-div, .registration-div{
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-form{
+.login-form, .registration-form{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
@@ -36,17 +36,17 @@ header{
     align-items: center;
 }
 
-.login-form-item{
+.login-form-item, .registration-form-item{
     display: flex;
     flex-direction: column;
     row-gap: 5px;
 }
 
-.login-form-item>label{
+.login-form-item>label, .registration-form-item>label{
     font-size: 13px;
 }
 
-.login-form-item>input{
+.login-form-item>input, .registration-form-item>input{
     width: 25vw;
     height: 20px;
     border-radius: 10px;
@@ -54,7 +54,7 @@ header{
     padding:10px;
 }
 
-.login-button{
+.login-button, .register-button{
     background-color: white;
     border: 2px solid black;
     border-radius: 5px;
@@ -64,7 +64,7 @@ header{
     transition: all 0.1s linear;
 }
 
-.login-button:hover{
+.login-button:hover, .register-button:hover{
     background-color: black;
     color: white;
     cursor: pointer;

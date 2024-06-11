@@ -22,8 +22,8 @@ export default function CreateUser(){
         })
     }
 
-    async function formSubmit(){
-        
+    async function formSubmit(e:any){
+        e.preventDefault();
         for (var key in userData){
             if (userData[key] === ''){
                 setError('Please fill all fields')
@@ -50,13 +50,27 @@ export default function CreateUser(){
     }
 
     return(
-        <div>
-            <input placeholder="Username" name='username' onChange={handlechange}/>
-            <input placeholder="Password" name = 'password' onChange={handlechange} type="password"/>
-            <input placeholder="Password Confirmation" name="passwordConfirmation" onChange={handlechange} type="password"/>
-            <div onClick={formSubmit}>Register</div>
-            <div>{error}</div>
+        <div className="registration-div">
+            <form onSubmit={formSubmit} className="registration-form">
+                <h2>Register</h2>
+                <div className="registration-form-item">
+                    <label htmlFor="username">Username: </label>
+                    <input placeholder="Username" name='username' onChange={handlechange}/>
+                </div>
+                
+                <div className="registration-form-item">
+                    <label htmlFor="password">Password:</label>
+                    <input placeholder="Password" name = 'password' onChange={handlechange} type="password"/>
+                </div>
 
+                <div className="registration-form-item">
+                    <label htmlFor="passwordConfirmation">Password Confirmation:</label>
+                    <input placeholder="Password Confirmation" name="passwordConfirmation" onChange={handlechange} type="password"/>
+                </div>
+                
+                <input type="submit" value="Register" className="register-button"/>
+                <div>{error}</div>
+            </form>
         </div>
     )
 }

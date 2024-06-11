@@ -17,7 +17,7 @@ export function AuthProvider(){
 
     let loginUser = async (e:any) => {
         e.preventDefault()
-        const response = await fetch('http://127.0.0.1:8000/backend/token/',{
+        const response = await fetch(`${api}token/`,{
             method:"POST",
             headers:{
                 'Content-Type':'application/json'
@@ -45,7 +45,7 @@ export function AuthProvider(){
     }
 
     const updateToken = async () => {
-        const response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
+        const response = await fetch(`${api}/token/refresh/`, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'

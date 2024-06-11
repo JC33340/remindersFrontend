@@ -8,6 +8,7 @@ import PrivateRoute from './utils/PrivateRoute';
 import Header from './components/Header';
 import { AuthProvider } from './context/AuthContext';
 import CreateUser from './pages/CreateUser';
+import CreateProfile from './pages/CreateProfile';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route element={<Header />}>
                 <Route element = {<PrivateRoute />} >
                   <Route path="/" element={<HomePage/>} />
+                  <Route path="/create-profile" element={<CreateProfile />} />
                 </Route>
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path='/register' element ={<CreateUser />} />

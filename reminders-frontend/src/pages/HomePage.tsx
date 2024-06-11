@@ -1,10 +1,13 @@
 import React from 'react'
 import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
     const {user,authTokens,logoutUser} = React.useContext(AuthContext)
 
-    let [profile, setProfile] = React.useState<{}[]>([])
+    let [profile, setProfile] = React.useState<{user:{},first_name:string}>()
+    let firstName=""
+    let navigate = useNavigate()
 
     React.useEffect(() => {
         getProfile()
@@ -21,16 +24,25 @@ const HomePage = () => {
         let data = await response.json()
         if(response.status === 200){
             setProfile(data)
+        } else if (response.status === 400){
+            console.log('yip')
+            navigate('/create-profile')
         } else if(response.statusText === 'Unauthorized'){
             logoutUser()
         }
+    }
+
+    try{
+        firstName = `${profile?.first_name[0].toUpperCase()}${profile?.first_name.slice(1)}`
+    } catch(err){
+        firstName = "sorry"
     }
 
 
     return (
         user ? (
         <div>
-            <p>You are logged in to the homepage!</p>
+            <p>Welcome {firstName}</p> 
         </div>
         ):(
         <div>
