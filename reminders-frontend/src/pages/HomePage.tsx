@@ -6,7 +6,6 @@ const HomePage = () => {
     const {user,authTokens,logoutUser} = React.useContext(AuthContext)
 
     let [profile, setProfile] = React.useState<{user:{},first_name:string}>()
-    let firstName=""
     let navigate = useNavigate()
 
     React.useEffect(() => {
@@ -25,24 +24,17 @@ const HomePage = () => {
         if(response.status === 200){
             setProfile(data)
         } else if (response.status === 400){
-            console.log('yip')
             navigate('/create-profile')
         } else if(response.statusText === 'Unauthorized'){
             logoutUser()
         }
     }
 
-    try{
-        firstName = `${profile?.first_name[0].toUpperCase()}${profile?.first_name.slice(1)}`
-    } catch(err){
-        firstName = "sorry"
-    }
-
 
     return (
         user ? (
         <div>
-            <p>Welcome {firstName}</p> 
+            <p>Welcome {profile?`${profile?.first_name[0].toUpperCase()}${profile?.first_name.slice(1)}`:''}</p> 
         </div>
         ):(
         <div>

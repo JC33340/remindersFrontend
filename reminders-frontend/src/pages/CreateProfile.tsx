@@ -30,7 +30,7 @@ export default function CreateProfile(){
         }
         })
         if (response.status === 200){
-            navigate('')
+            navigate('/')
         } else {
             return
         }
@@ -40,9 +40,18 @@ export default function CreateProfile(){
         event.preventDefault()
         if (data){
             let keys = Object.keys(data)
-            console.log(keys)
-            console.log('yuh')
-            apiProfile()
+            const containsAll = arrayKey.every(i=>keys.includes(i))
+            if (containsAll){
+                const emptyField = Object.values(data).includes('')
+                const emailField = data.email.includes('@')
+                if (!emptyField && emailField){
+                    apiProfile()
+                }else{
+                    return setErrorMessage("Please correctly fill in all boxes")
+                }
+            } else {
+                return setErrorMessage('Please fill in all boxes')
+            }
         } else {
             setErrorMessage("Please fill in all boxes")
         }
@@ -58,8 +67,11 @@ export default function CreateProfile(){
             },
             body:JSON.stringify(data)
         })
+        let returnData = await response.json()
         if (response.statusText === 'Unauthorized'){
             logoutUser()
+        } else if (response.status === 200 && returnData[0] === "profile created"){
+            navigate('/')
         }
     }
 
