@@ -1,6 +1,7 @@
 import React from 'react'
 import AuthContext from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import CalendarComponent from '../components/WeekCalender';
 
 const HomePage = () => {
     const {user,authTokens,logoutUser} = React.useContext(AuthContext)
@@ -35,6 +36,7 @@ const HomePage = () => {
         user ? (
         <div>
             <p>Welcome {profile?`${profile?.first_name[0].toUpperCase()}${profile?.first_name.slice(1)}`:''}</p> 
+            <CalendarComponent />
         </div>
         ):(
         <div>
