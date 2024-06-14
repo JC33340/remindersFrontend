@@ -1,5 +1,49 @@
-.weekly-calender-div{
+.calender-wrapper{
     display: flex;
     justify-content: space-evenly;
+    padding: 20px;
+}
 
+.calender-day-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.calender-day-item{
+    height: 30px;
+}
+
+.non-axis-item{
+    border-top: 1px solid rgba(0,0,0,0.3);
+    border-left: 1px solid rgba(0,0,0,0.3);
+}
+
+.bottom{
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.right{
+    border-right: 1px solid rgba(0,0,0,0.3)
+}
+
+.top{
+    border-top:none;
+    border-right:none;
+    border-left:none;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.axis-item{
+    border-top: 1px solid rgba(0,0,0,0);
+    opacity: 0.3;
+    text-align: right;
+    padding-right: 20px;
+}
+
+
+.axis-item>span{
+    position:relative;
+    bottom:-20px
 }
